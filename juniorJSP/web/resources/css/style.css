@@ -1,0 +1,12 @@
+.principal {
+    //text-align: center;
+    background-color: deepskyblue;
+    margin: 50px;
+}
+.listado{
+    //text-align: center;
+    background-color: gainsboro;
+}
+.cabecera{
+    background-color: darkviolet;
+}
