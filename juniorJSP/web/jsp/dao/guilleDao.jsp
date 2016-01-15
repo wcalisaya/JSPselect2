@@ -18,9 +18,9 @@
             ps.setString(3, user);
             ps.setString(4, pass);
             if (ps.executeUpdate() == 1) {
-                JOptionPane.showMessageDialog(null, "Insert OK -> " + nombre +"  "+cargo);
-                //out.print("exito");
-                response.sendRedirect("../../index_1.jsp");
+                //JOptionPane.showMessageDialog(null, "Insert OK -> " + nombre +"  "+cargo);
+                out.print("exito");
+                //response.sendRedirect("../../index_1.jsp");
             } else {
                 out.print("no se pudo insertar");
             }

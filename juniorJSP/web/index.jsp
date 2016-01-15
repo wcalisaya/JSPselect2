@@ -12,11 +12,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="resources/css/style.css">
-        
+
     </head>
     <body>
-        <%            
-            consulta = "select * from guille ";
+        <%            consulta = "select * from guille ";
             ps = conex.prepareStatement(consulta);
             rs = ps.executeQuery();
         %>
@@ -61,7 +60,7 @@
                 <%}%>
             </table>
         </div>
-            <script src="resources/js/jquery-1.11.2.js"></script>
-            <script src="resources/js/ajax.js"></script>
+        <script src="resources/js/jquery-1.12.0.min.js"></script>
+        <script src="resources/js/ajax.js"></script>
     </body>
 </html>

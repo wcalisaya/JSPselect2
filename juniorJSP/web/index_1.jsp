@@ -19,48 +19,63 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#multiple").select2({
-                  placeholder: "Seleccione",
-                   maximumSelectionLength: 2
+                    placeholder: "Seleccione",
+                    tags: true
                 });
             });
         </script>
     </head>
     <body>
-        <div class="principal">
-            <h2>GUILLERMO</h2>
-            <form action="jsp/dao/guilleDao.jsp" method="POST">
-                <input type="text" name="nombre" placeholder="nombre wi" required=""/><br>
-                <input type="text" name="cargo" placeholder="cargo" required=""/><br>
-                <input type="text" name="user" placeholder="username"/><br>
-                <input type="password" name="pass" placeholder="pass"/><br>
-                <input type="hidden" name="accion" value="guardar">
-                <input type="submit" name="Add" value="Agregar">
-            </form>    
+        <br>
+        <br>
 
+
+        <div class="principal">
+            <div style="margin: top; background-color: #269abc ">
+
+
+                <h2>GUILLERMO</h2>
+                <form action="jsp/dao/guilleDao.jsp" method="POST">
+                    <input type="text" name="nombre" placeholder="nombre wi" required=""/><br>
+                    <input type="text" name="cargo" placeholder="cargo" required=""/><br>
+                    <input type="text" name="user" placeholder="username"/><br>
+                    <input type="password" name="pass" placeholder="pass"/><br>
+                    <input type="hidden" name="accion" value="guardar">
+                    <input type="submit" name="Add" value="Agregar">
+                </form>    
+            </div>
             <br>
-            <div class="listado">
-                <table border="1">
-                    <tr>
-                    <form action="index_1.jsp" method="POST">
-                        <%  consulta = "SELECT * FROM guille group by nombre";
-                            ps = conex.prepareStatement(consulta);
-                            rs = ps.executeQuery();
-                        %> 
-                        Buscar: 
-                        <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:300px">
-                            <select id="multiple" class="form-control" name="txtbuscar">
+            <div class="">
+                <br>
+                <form action="index_1.jsp" method="POST">
+                    <%  consulta = "SHOW COLUMNS FROM guille";
+                        ps = conex.prepareStatement(consulta);
+                        rs = ps.executeQuery();
+                    %> 
+                    <select id="" type="button" class=" btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <% while(rs.next()){%>
+                        <option value=""><%=rs.getString("Field")%></option>
+                        <%}%>
+                    </select>
+                    Buscar: 
+
+                    <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:500px">
+                        <select id="multiple" class="form-control" name="txtbuscar" multiple="multiple">
+                            <%  consulta = "Select * from guille group by nombre";
+                                ps = conex.prepareStatement(consulta);
+                                rs = ps.executeQuery();
+                            %> 
                             <option value=""></option>
                             <% while (rs.next()) {%>
                             <option value="<%=rs.getString("nombre")%>"><%=rs.getString("nombre")%></option>
                             <%}%>
                         </select>
-                        </div>
-                        <input class="btn btn-success"type="submit" value="Search"/>
-                        
-                    </form>
-                    <br>
-                    </tr>
-                    <tr class="cabecera">
+                    </div>
+                    <input class="btn btn-success"type="submit" value="Search"/>
+                </form>
+                <br>
+                <table border="" class="table table-bordered">
+                    <tr>
                         <th>Nombre</th>    
                         <th>Cargo</th>    
                         <th>username</th>
@@ -79,7 +94,7 @@
                         <td><%=rs.getString("nombre")%></td>
                         <td><%=rs.getString("cargo")%></td>
                         <td><%=rs.getString("username")%></td>  
-                        <td><a href="jsp/dao/guilleDao.jsp?accion=eliminar&idG=<%=rs.getString("id")%>">eliminar</a></td>
+                        <td><a href="jsp/dao/guilleDao.jsp?accion=eliminar&idG=<%=rs.getString("id")%>" class="btn btn-danger">Delete</a></td>
                     </tr>
                     <%}%>
                 </table>
