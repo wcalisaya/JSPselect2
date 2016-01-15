@@ -47,6 +47,11 @@
             <br>
             <div class="">
                 <br>
+                <script src="resources/js/multiple-select.js"></script>
+                <script>
+                    $('select').multipleSelect();
+                </script>
+                
                 <form action="index_1.jsp" method="POST">
                     <%  consulta = "SHOW COLUMNS FROM guille";
                         ps = conex.prepareStatement(consulta);
